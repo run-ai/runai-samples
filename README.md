@@ -3,11 +3,10 @@
 This repository is a collection of example files surrounding the [Run:AI](https://run.ai) eco system. Included in this repository are examples for:
 
 - [Dockerfiles](https://github.com/run-ai/runai-samples/tree/main/Dockerfiles)
-- [RunAI workload submission](https://github.com/run-ai/runai-samples/tree/main/Workloads)
 - [Integrations](https://github.com/run-ai/runai-samples/tree/main/Integrations)
 - [Metrics](https://github.com/run-ai/runai-samples/tree/main/Metrics)
 - [RunAI Policies](https://github.com/run-ai/runai-samples/tree/main/Policies)
-
+- [RunAI workload submission](https://github.com/run-ai/runai-samples/tree/main/Workloads)
 
 ## 🏃🏻 Join us in the AI Infrastructure Club!
 
