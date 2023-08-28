@@ -1,6 +1,6 @@
-# RunAI Examples
+# RunAI Samples
 
-This repository is a collection of example files surrounding the [Run:AI](https://run.ai) eco system. Included in this repository are examples for:
+This repository is a collection of sample files surrounding the [Run:AI](https://run.ai) eco system. Included in this repository are examples for:
 
 - [Dockerfiles](https://github.com/run-ai/runai-samples/tree/main/Dockerfiles)
 - [Integrations](https://github.com/run-ai/runai-samples/tree/main/Integrations)
