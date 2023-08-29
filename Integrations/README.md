@@ -15,7 +15,7 @@ Looking for a place to discuss best practices, discover new tools, and exchange 
 - and many more...
 
 ## Disclaimer
-This repository is not supported by [Run:AI](https://run.ai) in any mannor. Further, [Run:AI](https://run.ai) support will not assist you with anything you find here. If you have questions or issues, please open an [Issue]() and we will get it addressed as soon as possible.
+This repository is not supported by [Run:AI](https://run.ai) in any mannor. Further, [Run:AI](https://run.ai) support will not assist you with anything you find here. If you have questions or issues, please open an [Issue](https://github.com/run-ai/runai-samples/issues) and we will get it addressed as soon as possible.
 
 ## Legal Disclaimer
 The examples in this repository are provided as-is and without warranty of any kind. RunAI is not responsible for any damages that may arise from the use of these examples. You use the examples at your own risk.
