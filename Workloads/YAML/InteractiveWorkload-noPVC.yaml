@@ -13,7 +13,7 @@ spec:
   jupyter:
     value: true
   ingressUrl:
-    value: "https://csit-poc.runailabs.com/team-a/jupyter-job"
+    value: "https://runai-poc.runailabs.com/team-a/jupyter-job"
   pvcs:
     items:
       pvc-fs2:
