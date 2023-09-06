@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "d5019676-b841-4089-b481-b15318667406",
+		"name": "runai_administrator_restapi_postman Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26481783"
+	},
+	"item": [
+		{
+			"name": "Get application token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "default"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "default"
+						},
+						{
+							"key": "response_type",
+							"value": "id_token",
+							"type": "default"
+						},
+						{
+							"key": "client_id",
+							"value": "ClusterSetup",
+							"type": "default"
+						},
+						{
+							"key": "client_secret",
+							"value": "kqtmVKYXcEFIFsV7IG2laFMVxNVrQ53t",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://runai-demo3.runailabs.com/auth/realms/runai/protocol/openid-connect/token",
+					"protocol": "https",
+					"host": [
+						"runai-demo3",
+						"runailabs",
+						"com"
+					],
+					"path": [
+						"auth",
+						"realms",
+						"runai",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Jobs list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJEWkNTTUxmT0gzZUI3MEpuRzFZTXBXNjR1TjBneUxTNkZhbVBnX2tjV2lBIn0.eyJleHAiOjE2OTM5MDU0NjksImlhdCI6MTY5MzkwMTg2OSwianRpIjoiNzFlM2FjNjYtZTI5MS00NTU5LWE0NGQtYWU2MDExODQzYzZiIiwiaXNzIjoiaHR0cHM6Ly9ydW5haS1kZW1vNC5ydW5haWxhYnMuY29tL2F1dGgvcmVhbG1zL3J1bmFpIiwiYXVkIjpbInJ1bmFpIiwiYnJva2VyIiwiYWNjb3VudCJdLCJzdWIiOiIwNWU2YWY5Yi1mNDY3LTRlZmUtODIxYi1kZjEyZGU3M2ZjZjIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJDbHVzdGVyU2V0dXAiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9rZXljbG9hay1odHRwIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1ydW5haSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImJyb2tlciI6eyJyb2xlcyI6WyJyZWFkLXRva2VuIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwidGVuYW50X2lkIjoxMDAxLCJjbGllbnRIb3N0IjoiMTAuMC4xMC4zNyIsImNsaWVudElkIjoiQ2x1c3RlclNldHVwIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzZXJ2aWNlLWFjY291bnQtY2x1c3RlcnNldHVwIiwiY2xpZW50QWRkcmVzcyI6IjEwLjAuMTAuMzcifQ.RHtwGbLLkA6Yz-5ukBXUHNupZPZXBJCHK5sI8Q710nWGmX7FZo-3B_C_XQEE1LDSO_EE4HvXPr3AACYQk65tf5uInxSLYLS02fDBfTh6Fp9s14DM91lm4r1XM4DHbveqfpS75yUEfbWPegHn_O8wCaq-yhkCoIkF2hUzoHVMt8WD0MsceBwxN7R0_VRRL3hYL1NJ4vi0HbbR9hmMbTvEFtDJfakpEVRsmSquN0XCltJ4EmKWFpRoxQRQbpzgPYMttXpY6p5JREM2COQUyyji7uot9mz7B8qdTb4h94wkJgGGTDs_jQYlEYaDfCfNB7AvGFVNRLQ-dpgOdjCRz4sYug",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://runai-demo4.runailabs.com/v1/k8s/clusters/047ff3cc-a24f-44c0-a2ac-bec13edc7d17/jobs",
+					"protocol": "https",
+					"host": [
+						"runai-demo4",
+						"runailabs",
+						"com"
+					],
+					"path": [
+						"v1",
+						"k8s",
+						"clusters",
+						"047ff3cc-a24f-44c0-a2ac-bec13edc7d17",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get clusters list Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJobVNxRklhNXlKcjF1REUzdmdHTUtkUWh2aHE1eGVuQVZrR1ZPMXRGX0U4In0.eyJleHAiOjE2NjY1MTM2NTIsImlhdCI6MTY2NjUxMTg1MiwianRpIjoiNjVlZDY0MDQtYWJhNy00MzcxLTk5NGMtMTRlOTU4MTMyMjhmIiwiaXNzIjoiaHR0cHM6Ly9hcHAucnVuLmFpL2F1dGgvcmVhbG1zL2VudmluYWNsaWNrIiwiYXVkIjpbInJ1bmFpIiwiYWNjb3VudCJdLCJzdWIiOiJmZDE1ZmQ4Ny1kYTJkLTQyNjktYThkZi00Y2Q5NDZkNzJiMzYiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJvbXJpLXRlc3QiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHBzOi8vYXBwLnJ1bi5haSJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLWVudmluYWNsaWNrIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwidGVuYW50X2lkIjoyMTIsImNsaWVudEhvc3QiOiI4NC4yMjkuMTI1LjE5MCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiY2xpZW50SWQiOiJvbXJpLXRlc3QiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzZXJ2aWNlLWFjY291bnQtb21yaS10ZXN0IiwiY2xpZW50QWRkcmVzcyI6Ijg0LjIyOS4xMjUuMTkwIn0.MuyDPJPpihwCFYyO8hgtq_G1adog5edegBhIJMy1wpTW442DT9GOMCc2lsDozFa3a7EXOENha8yKtGOgm5cJ52f-f1dPEmj9K6ufcmIavv0QT96mueYnEXdODHL9hBMrkihgHm_dhHjwtFuQKycDelqYZ7jr9a8rsv00blojnmygyfjl0d070j0llUkgI9pJ3y92JGxdKxUnzbfTu9joF-DZNRnXh8X8Bp99s03EsQ3XfO45mrkspspho5c3UiaaRK_n3IpnDxuw_tK43vhn1NTyUehcIvVVAAEN5XEHPrnjiWTc_VT4wwNLnk04iB3tKn9gb7bG8HCAAUOzPsY58w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://envinaclick.run.ai/v1/k8s/clusters/92f46162-8855-477c-8687-84f092b2d6ca/projects",
+					"protocol": "https",
+					"host": [
+						"envinaclick",
+						"run",
+						"ai"
+					],
+					"path": [
+						"v1",
+						"k8s",
+						"clusters",
+						"92f46162-8855-477c-8687-84f092b2d6ca",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get users list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJwaXdBTktCZUhYOFZTZDRXZG00NGdnR3NmRU9FWW5MVmxUN3V6QlVxVEh3In0.eyJleHAiOjE2NjMwNjM4ODksImlhdCI6MTY2MzA2MjA4OSwianRpIjoiY2ZmNzA4ZWYtNjVmOC00Y2E2LTkzMjYtMjA2NmU3NzU3NmY0IiwiaXNzIjoiaHR0cHM6Ly9hcHAucnVuLmFpL2F1dGgvcmVhbG1zL3Byb2R0ZXN0a2MiLCJhdWQiOlsicnVuYWkiLCJhY2NvdW50Il0sInN1YiI6IjI5NWMyODFjLTlmNWItNGMxYS05MzNlLWRhYTZlMmQwM2ZmMCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImNzLW9tcmktcG9zdG1hbiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9hcHAucnVuLmFpIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLXByb2R0ZXN0a2MiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInRlbmFudF9pZCI6MTE5LCJjbGllbnRJZCI6ImNzLW9tcmktcG9zdG1hbiIsImNsaWVudEhvc3QiOiIxOTIuMTE3LjE5MC42MiIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoic2VydmljZS1hY2NvdW50LWNzLW9tcmktcG9zdG1hbiIsImNsaWVudEFkZHJlc3MiOiIxOTIuMTE3LjE5MC42MiJ9.Ex76rK9iV82tzb52vBq8cWwAPySV6j_YJ6zmYlb5QxeLfFP--tqlQNHpWWQMGmUXTBr0NHJcnyPtBb5h11rz3Ui3D34dOxCZBLnb1RNUGWBytdFLXdsLjJLsoq4qiLcC-JCyaDLQGFof6lo3NZ1Qj2Bgf9tn3AJmIOZI7eghfYqTg9v4O7RaPE7sfp3un4gxtSivfG0TmsToorncCVypt6CAsPFb1J5XyIZR4BTJNKpCkXXwUpx6UZdlQljE-omlymeTmWLUa4-omr2fGear0AtnPlCtgBguebkomuO7160hKZd03tHjGzlW1Cjw65qTa2yEZRZ-rdOYHhmqLWqz6w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://prodtestkc.run.ai/v1/k8s/users",
+					"protocol": "https",
+					"host": [
+						"prodtestkc",
+						"run",
+						"ai"
+					],
+					"path": [
+						"v1",
+						"k8s",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get audit logs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJwaXdBTktCZUhYOFZTZDRXZG00NGdnR3NmRU9FWW5MVmxUN3V6QlVxVEh3In0.eyJleHAiOjE2NjMwNjM4ODksImlhdCI6MTY2MzA2MjA4OSwianRpIjoiY2ZmNzA4ZWYtNjVmOC00Y2E2LTkzMjYtMjA2NmU3NzU3NmY0IiwiaXNzIjoiaHR0cHM6Ly9hcHAucnVuLmFpL2F1dGgvcmVhbG1zL3Byb2R0ZXN0a2MiLCJhdWQiOlsicnVuYWkiLCJhY2NvdW50Il0sInN1YiI6IjI5NWMyODFjLTlmNWItNGMxYS05MzNlLWRhYTZlMmQwM2ZmMCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImNzLW9tcmktcG9zdG1hbiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9hcHAucnVuLmFpIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLXByb2R0ZXN0a2MiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInRlbmFudF9pZCI6MTE5LCJjbGllbnRJZCI6ImNzLW9tcmktcG9zdG1hbiIsImNsaWVudEhvc3QiOiIxOTIuMTE3LjE5MC42MiIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoic2VydmljZS1hY2NvdW50LWNzLW9tcmktcG9zdG1hbiIsImNsaWVudEFkZHJlc3MiOiIxOTIuMTE3LjE5MC42MiJ9.Ex76rK9iV82tzb52vBq8cWwAPySV6j_YJ6zmYlb5QxeLfFP--tqlQNHpWWQMGmUXTBr0NHJcnyPtBb5h11rz3Ui3D34dOxCZBLnb1RNUGWBytdFLXdsLjJLsoq4qiLcC-JCyaDLQGFof6lo3NZ1Qj2Bgf9tn3AJmIOZI7eghfYqTg9v4O7RaPE7sfp3un4gxtSivfG0TmsToorncCVypt6CAsPFb1J5XyIZR4BTJNKpCkXXwUpx6UZdlQljE-omlymeTmWLUa4-omr2fGear0AtnPlCtgBguebkomuO7160hKZd03tHjGzlW1Cjw65qTa2yEZRZ-rdOYHhmqLWqz6w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://prodtestkc.run.ai/v1/k8s/audit",
+					"protocol": "https",
+					"host": [
+						"prodtestkc",
+						"run",
+						"ai"
+					],
+					"path": [
+						"v1",
+						"k8s",
+						"audit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Project",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJwaXdBTktCZUhYOFZTZDRXZG00NGdnR3NmRU9FWW5MVmxUN3V6QlVxVEh3In0.eyJleHAiOjE2NjMwNjM4ODksImlhdCI6MTY2MzA2MjA4OSwianRpIjoiY2ZmNzA4ZWYtNjVmOC00Y2E2LTkzMjYtMjA2NmU3NzU3NmY0IiwiaXNzIjoiaHR0cHM6Ly9hcHAucnVuLmFpL2F1dGgvcmVhbG1zL3Byb2R0ZXN0a2MiLCJhdWQiOlsicnVuYWkiLCJhY2NvdW50Il0sInN1YiI6IjI5NWMyODFjLTlmNWItNGMxYS05MzNlLWRhYTZlMmQwM2ZmMCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImNzLW9tcmktcG9zdG1hbiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9hcHAucnVuLmFpIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLXByb2R0ZXN0a2MiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInRlbmFudF9pZCI6MTE5LCJjbGllbnRJZCI6ImNzLW9tcmktcG9zdG1hbiIsImNsaWVudEhvc3QiOiIxOTIuMTE3LjE5MC42MiIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoic2VydmljZS1hY2NvdW50LWNzLW9tcmktcG9zdG1hbiIsImNsaWVudEFkZHJlc3MiOiIxOTIuMTE3LjE5MC42MiJ9.Ex76rK9iV82tzb52vBq8cWwAPySV6j_YJ6zmYlb5QxeLfFP--tqlQNHpWWQMGmUXTBr0NHJcnyPtBb5h11rz3Ui3D34dOxCZBLnb1RNUGWBytdFLXdsLjJLsoq4qiLcC-JCyaDLQGFof6lo3NZ1Qj2Bgf9tn3AJmIOZI7eghfYqTg9v4O7RaPE7sfp3un4gxtSivfG0TmsToorncCVypt6CAsPFb1J5XyIZR4BTJNKpCkXXwUpx6UZdlQljE-omlymeTmWLUa4-omr2fGear0AtnPlCtgBguebkomuO7160hKZd03tHjGzlW1Cjw65qTa2yEZRZ-rdOYHhmqLWqz6w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://prodtestkc.run.ai/v1/k8s/audit",
+					"protocol": "https",
+					"host": [
+						"prodtestkc",
+						"run",
+						"ai"
+					],
+					"path": [
+						"v1",
+						"k8s",
+						"audit"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
