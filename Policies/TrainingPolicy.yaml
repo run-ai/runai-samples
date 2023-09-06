@@ -1,0 +1,16 @@
+apiVersion: run.ai/v2alpha1
+kind: TrainingPolicy
+metadata:
+  name: training-policy
+  namespace: runai
+spec:
+  cpu:
+    rules:
+      required: true
+      min: "0.1"
+      max: "0.5"
+    value: "0.1"
+  memory:
+    rules:
+      required: true
+    value: "100M"
