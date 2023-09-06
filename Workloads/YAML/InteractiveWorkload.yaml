@@ -1,0 +1,18 @@
+apiVersion: run.ai/v2alpha1
+kind: InteractiveWorkload
+metadata:
+  name: jupyter-job3
+  namespace: runai-team-a
+spec:
+  name:
+    value: jupyter-job3
+  gpu:
+    value: "0.1"
+  image:
+    value: jupyter/base-notebook
+  jupyter:
+    value: true
+  ingressUrl:
+    value: "https://runai-demo.runailabs.com/team-a/jupyter-job3"
+  username: 
+    value: "test@run.ai"
