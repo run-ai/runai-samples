@@ -1,0 +1,26 @@
+apiVersion: run.ai/v2alpha1
+kind: InteractiveWorkload
+metadata:
+  name: jupyter-job
+  namespace: runai-team-a
+spec:
+  name:
+    value: jupyter-job
+  gpu:
+    value: "0.1"
+  image:
+    value: jupyter/base-notebook
+  jupyter:
+    value: true
+  ingressUrl:
+    value: "https://csit-poc.runailabs.com/team-a/jupyter-job"
+  pvcs:
+    items:
+      pvc-fs2:
+        value:
+          existingPvc: false
+          claimName: test-yaml
+          storageClass: nfs-csi
+          size: 1Gi
+          path: /home/jovyan/work
+          readOnly: false
