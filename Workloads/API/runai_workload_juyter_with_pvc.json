@@ -1,0 +1,28 @@
+curl -X POST \ #  
+'https://<IP>:6443/apis/run.ai/v2alpha1/namespaces/runai-christian/interactiveworkloads' \ 
+    --header 'Content-Type: application/yaml' \
+    --header 'Authorization: Bearer <BEARER>' \   
+    --data-raw 'apiVersion: run.ai/v2alpha1
+kind: InteractiveWorkload
+metadata:
+  name: jup-test
+spec:
+  username:
+    value: test@run.ai
+  name:
+    value: jup-test
+  gpu:
+    value: '1'
+  image:
+    value: jupyter/scipy-notebook
+  jupyter:
+    value: true
+  pvcs:
+    items:
+      lrvtcrztmelx:
+        value:
+          existingPvc: true
+          path: "/data"
+          claimName: roads-data
+  ingressUrl:
+    value: https://cs-alexs-demo.runailabs.com/_PROJECT_NAME_/_JOB_NAME_'
