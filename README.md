@@ -2,6 +2,7 @@
 
 This repository is a collection of sample files surrounding the [Run:AI](https://run.ai) eco system. Included in this repository are examples for:
 
+- [Automation(https://github.com/run-ai/runai-samples/tree/main/Automation)
 - [Dockerfiles](https://github.com/run-ai/runai-samples/tree/main/Dockerfiles)
 - [Integrations](https://github.com/run-ai/runai-samples/tree/main/Integrations)
 - [Metrics](https://github.com/run-ai/runai-samples/tree/main/Metrics)
