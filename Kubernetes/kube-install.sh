@@ -17,9 +17,9 @@ function disable-swap {
     sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 }
 
-# ***load kernel modules for support containerd 
+# ***load kernel modules for support containerd
 function load-kernel-modules {
-    tee /etc/modules-load.d/containerd.conf <<EOF 
+    tee /etc/modules-load.d/containerd.conf <<EOF
     overlay
     br_netfilter
 EOF
@@ -66,7 +66,7 @@ function k8s-install {
         echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.26/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 	    sudo apt-get update
 	    echo -e "${GREEN} installing kubectl kubeadm kubelet...${NC}"
-        sudo apt-get install -y kubelet="${k8s_version}-1.1" kubeadm="${k8s_version}-1.1" kubectl="${k8s_version}-1.1"
+        sudo apt-get install -qy kubelet="${k8s_version}-00" kubeadm="${k8s_version}-00" kubectl="${k8s_version}-00"
 }
 
 # *** init K8s
@@ -109,7 +109,7 @@ function install-helm {
         tar -zxvf helm-v3.9.3-linux-amd64.tar.gz
         sudo mv linux-amd64/helm /usr/local/bin/helm
 	fi
-		
+
 }
 
 # ***  install nvidia gpu operator
@@ -142,7 +142,7 @@ then
     load-kernel-modules
     network
     install-containerd
-    if pgrep -x "containerd" >/dev/null 
+    if pgrep -x "containerd" >/dev/null
     then
         echo -e "${GREEN}containerd is up and running${NC}"
     else
@@ -177,7 +177,7 @@ then
     echo -e "${YELLOW}Would you like to reset kubernetes cluster (y/n)?${NC}"
     read answer
     if [ "${answer}" == "y" ]
-    then 
+    then
         echo -e "${YELLOW}Reset kubernetes cluster...${NC}"
         kubeadm reset -f
         rm -rf /etc/cni /etc/kubernetes /var/lib/dockershim /var/lib/etcd /var/lib/kubelet /var/run/kubernetes ~/.kube/*
@@ -187,7 +187,7 @@ then
         iptables -t mangle -F && iptables -t mangle -X
         systemctl restart containerd
         if [ $? == 0 ]
-        then 
+        then
             echo -e "${GREEN} OK! ${NC}"
         else
             echo -e "${RED}Something went wrong!${NC}"
@@ -199,11 +199,11 @@ then
     echo -e "${YELLOW}Would you like to remove kubernetes packages completely? (y/n)?${NC}"
     read answer
     if [ "${answer}" == "y" ]
-    then 
+    then
         echo -e "${YELLOW}Removing kubeadm kubectl kubelet kubernetes-cni...${NC}"
         sudo apt-get purge -y kubeadm kubectl kubelet kubernetes-cni
         if [ $? == 0 ]
-        then 
+        then
             echo -e "${GREEN} OK! ${NC}"
         else
             echo -e "${RED}Something went wrong!${NC}"
