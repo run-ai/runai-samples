@@ -66,7 +66,7 @@ function k8s-install {
         echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.26/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 	    sudo apt-get update
 	    echo -e "${GREEN} installing kubectl kubeadm kubelet...${NC}"
-        sudo apt-get install -qy kubelet="${k8s_version}-00" kubeadm="${k8s_version}-00" kubectl="${k8s_version}-00"
+        sudo apt-get install -qy kubelet="${k8s_version}-1.1" kubeadm="${k8s_version}-1.1" kubectl="${k8s_version}-1.1"
 }
 
 # *** init K8s
