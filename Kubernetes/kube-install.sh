@@ -62,11 +62,12 @@ function install-containerd {
 function k8s-install {
 	    sudo apt-get update
         sudo apt-get install -y apt-transport-https ca-certificates curl net-tools
-        curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.26/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-        echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.26/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
-	    sudo apt-get update
+        curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+        echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v${package_version}/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+        echo "package version set to ${package_version}"
+        sudo apt-get update
 	    echo -e "${GREEN} installing kubectl kubeadm kubelet...${NC}"
-        sudo apt-get install -qy kubelet="${k8s_version}-00" kubeadm="${k8s_version}-00" kubectl="${k8s_version}-00"
+        sudo apt-get install -qy kubelet="${k8s_version}-1.1" kubeadm="${k8s_version}-1.1" kubectl="${k8s_version}-1.1"
 }
 
 # *** init K8s
@@ -131,8 +132,9 @@ if [ "${task}" == "1" ]
 then
     echo -e "${GREEN} *** Please make sure inbound ports 6443,443,8080 are allowed *** ${NC}"
     sleep 5
-    read -p "$(echo -e "${YELLOW}Please enter kubernetes version, or press enter for default (1.26.8) :${NC}")" k8s_version
-    k8s_version=${k8s_version:-"1.26.8"}
+    read -p "$(echo -e "${YELLOW}Please enter kubernetes version, or press enter for default (1.27.8) :${NC}")" k8s_version
+    k8s_version=${k8s_version:-"1.27.8"}
+    package_version=${k8s_version%.*}
     first_server_ip=$(hostname -I | awk '{print $1}')
     read -p "$(echo -e "${YELLOW}Please enter your Server IP or accept default choice (${first_server_ip}):${NC}")" server_ip
     server_ip=${server_ip:-"${first_server_ip}"}
@@ -158,8 +160,9 @@ then
     kubeadm token create --print-join-command
 elif [ "${task}" == "2" ]
 then
-    read -p "$(echo -e "${YELLOW}Please enter kubernetes version, or press enter for default (1.26.8) :${NC}")" k8s_version
-    k8s_version=${k8s_version:-"1.26.8"}
+    read -p "$(echo -e "${YELLOW}Please enter kubernetes version, or press enter for default (1.27.8) :${NC}")" k8s_version
+    k8s_version=${k8s_version:-"1.27.8"}
+    package_version=${k8s_version%.*}
     disable-swap
     load-kernel-modules
     network

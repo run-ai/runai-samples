@@ -5,6 +5,7 @@ This repository is a collection of sample files surrounding the [Run:AI](https:/
 - [Automation](https://github.com/run-ai/runai-samples/tree/main/Automation)
 - [Dockerfiles](https://github.com/run-ai/runai-samples/tree/main/Dockerfiles)
 - [Integrations](https://github.com/run-ai/runai-samples/tree/main/Integrations)
+- [Kubernetes](https://github.com/run-ai/runai-samples/tree/main/Kubernetes)
 - [Metrics](https://github.com/run-ai/runai-samples/tree/main/Metrics)
 - [RunAI Policies](https://github.com/run-ai/runai-samples/tree/main/Policies)
 - [RunAI workload submission](https://github.com/run-ai/runai-samples/tree/main/Workloads)
