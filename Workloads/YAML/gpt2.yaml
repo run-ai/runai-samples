@@ -1,0 +1,50 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  labels:
+    project: <Runai Project Name>
+    workloadKind: InferenceWorkload
+    workloadName: <Job Name>
+  name: <Job Name>
+  namespace: <Runai Project Namespace>
+  spec:
+  template:
+    metadata:
+      annotations:
+        user: <Runai User>
+      labels:
+        project: <Runai Project Name>
+        run.ai/inferenceworkload: <Job Name>
+    spec:
+      containerConcurrency: 0
+      # Only needed if you wish to mount a PVC.
+      #volumes:
+      #  - name: inference-pv-storage
+      #    persistentVolumeClaim:
+      #      claimName: <PVC Claim name>
+      containers:
+      - image: cubeist/gpt2
+        name: user-container
+        ports:
+        - containerPort: 7860
+          protocol: TCP
+        readinessProbe:
+          successThreshold: 1
+          tcpSocket:
+            port: 0
+        resources:
+            limits:
+              nvidia.com/gpu: 0.75
+        # Only needed if you wish to mount a PVC.
+        #volumeMounts:
+        #  - mountPath: "<Container Mount Path>"
+        #    name: inference-pv-storage
+        securityContext: {}
+      enableServiceLinks: false
+      schedulerName: runai-scheduler
+      securityContext: {}
+      timeoutSeconds: 300
+  traffic:
+  - latestRevision: true
+    percent: 100
+
