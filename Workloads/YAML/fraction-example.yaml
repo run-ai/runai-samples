@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-fraction-deployment
+  namespace: runai-user-a
+  labels:
+    app: ubuntu
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: ubuntu
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+      annotations:
+        gpu-fraction: "0.25" # This value must be LESS THAN Zero
+    spec:
+      schedulerName: runai-scheduler
+      containers:
+      - name: ubuntu
+        image: ubuntu
+        command: ["sleep", "123456"]

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-memory-deployment
+  namespace: runai-user-a
+  labels:
+    app: ubuntu
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ubuntu
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+      annotations:
+        gpu-memory: "8192" # This value is in MB and must be a string
+    spec:
+      schedulerName: runai-scheduler 
+      containers:
+      - name: ubuntu
+        image: ubuntu
+        command: ["sleep", "123456"]
