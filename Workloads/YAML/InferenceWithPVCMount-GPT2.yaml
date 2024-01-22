@@ -16,7 +16,6 @@ spec:
         project: <Runai Project Name>
         run.ai/inferenceworkload: <Job Name>
     spec:
-      containerConcurrency: 0
       # Only needed if you wish to mount a PVC.
       #volumes:
       #  - name: inference-pv-storage
@@ -39,10 +38,7 @@ spec:
         #volumeMounts:
         #  - mountPath: "<Container Mount Path>"
         #    name: inference-pv-storage
-        securityContext: {}
-      enableServiceLinks: false
       schedulerName: runai-scheduler
-      securityContext: {}
       timeoutSeconds: 300
   traffic:
   - latestRevision: true
