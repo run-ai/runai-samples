@@ -1,8 +1,6 @@
 import http.client
 from pip._vendor import requests
 import json
-import random
-import string
 
 # Application Name and Secret must be created in the Run:AI User Interface. See https://docs.run.ai/developer/rest-auth/
 APPNAME = '<AppName>'
