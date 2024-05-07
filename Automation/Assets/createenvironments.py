@@ -42,7 +42,7 @@ def create_environment1(token):
     },
     "spec": {
         "command": "start-notebook.sh",
-        "args": "--NotebookApp.token=''",
+        "args": "--NotebookApp.token='' --port=8888",
         "environmentVariables": [],
         "image": "gcr.io/run-ai-demo/jupyter-demo",
         "imagePullPolicy": "IfNotPresent",
@@ -88,7 +88,7 @@ def create_environment2(token):
         },
     },
     "spec": {
-        "command": "bash -c \"bash -c 'mlflow server --host 0.0.0.0 &' & start-notebook.sh --NotebookApp.token=''\"",
+        "command": "bash -c \"bash -c 'mlflow server --host 0.0.0.0 &' & start-notebook.sh --NotebookApp.token='' --port=8888\"",
         "environmentVariables": [],
         "image": "cubeist/jupyter-mlflow",
         "imagePullPolicy": "IfNotPresent",
@@ -362,7 +362,7 @@ def create_environment8(token):
     },
     "spec": {
         "command": "start-notebook.sh",
-        "args": "--NotebookApp.token=\"\"",
+        "args": "--NotebookApp.token=\"\" --port=8888",
         "environmentVariables": [
             {
                 "name": "WANDB_PROJECT",
@@ -426,7 +426,7 @@ def create_environment9(token):
     },
     "spec": {
         "command": "jupyter",
-        "args": "lab --NotebookApp.token=''",
+        "args": "lab --NotebookApp.token='' --port=8888",
         "environmentVariables": [],
         "image": "nvcr.io/nvidia/pytorch:23.08-py3",
         "imagePullPolicy": "IfNotPresent",
