@@ -1,6 +1,6 @@
 gradio==3.37.0
 Flask==2.2.2
-requests==2.31.0
+requests==2.32.2
 openai
 langchain
 langchain_community
