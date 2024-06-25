@@ -1,0 +1,73 @@
+{
+    "apiVersion": "run.ai/v2alpha1",
+    "kind": "InferenceWorkload",
+    "metadata": {
+        "name": "work-vllm",
+        "namespace": "runai-test"
+    },
+    "spec": {
+        "name": {
+            "value": "work-vllm"
+        },
+        "arguments": {
+            "value": "--served-model-name meta-llama/Llama-2-7b-hf --gpu-memory-utilization=0.95 --disable-log-requests --trust-remote-code --port=8000 --tensor-parallel-size=1"
+        },
+        "command": {
+            "value": "python3 -m vllm.entrypoints.openai.api_server"
+        },
+        "cpu": {
+            "value": "1"
+        },
+        "environment": {
+            "items": {
+                "HUGGING_FACE_HUB_TOKEN": {
+                    "value": "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"
+                },
+                "RUNAI_JOB_NAME": {
+                    "value": "${RUNAI_JOB_NAME}"
+                },
+                "RUNAI_PROJECT": {
+                    "value": "${RUNAI_PROJECT}"
+                },
+                "TRANSFORMERS_CACHE": {
+                    "value": "/.cache"
+                }
+            }
+        },
+        "gpuDevices": {
+            "value": 1
+        },
+        "gpuMemory": {
+            "value": "16G"
+        },
+        "image": {
+            "value": "vllm/vllm-openai:latest"
+        },
+        "imagePullPolicy": {
+            "value": "IfNotPresent"
+        },
+        "maxScale": {
+            "value": 1
+        },
+        "memory": {
+            "value": "16G"
+        },
+        "minScale": {
+            "value": 1
+        },
+        "nodePools": {
+            "value": "default"
+        },
+        "ports": {
+            "items": {
+                "port-0": {
+                    "value": {
+                        "container": 8000,
+                        "protocol": "http",
+                        "serviceType": "ServingPort"
+                    }
+                }
+            }
+        }
+    }
+}

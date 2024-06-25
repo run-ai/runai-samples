@@ -1,0 +1,68 @@
+{
+    "apiVersion": "run.ai/v2alpha1",
+    "kind": "InferenceWorkload",
+    "metadata": {
+        "name": "gradio-ui",
+        "namespace": "runai-test"
+    },
+    "spec": {
+        "name": {
+            "value": "gradio-ui"
+        },
+        "cpu": {
+            "value": "0.1"
+        },
+        "environment": {
+            "items": {
+                "LLM_NAME": {
+                    "value": "meta-llama/Llama-2-7b-hf"
+                },
+                "LLM_URL": {
+                    "value": "http://work-vllm.runai-test.svc.cluster.local"
+                },
+                "MAX_TOKENS": {
+                    "value": "400"
+                },
+                "PATH_PREFIX": {
+                    "value": "/${RUNAI_PROJECT}/${RUNAI_JOB_NAME}"
+                },
+                "RUNAI_JOB_NAME": {
+                    "value": "${RUNAI_JOB_NAME}"
+                },
+                "RUNAI_PROJECT": {
+                    "value": "${RUNAI_PROJECT}"
+                }
+            }
+        },
+        "exposedUrls": {
+            "items": {
+                "url-0": {
+                    "value": {
+                        "containerPort": 7860,
+                        "customUrl": false
+                    }
+                }
+            }
+        },
+        "gpuDevices": {
+            "value": 0
+        },
+        "image": {
+            "value": "gcr.io/run-ai-demo/vllm-inference:latest"
+        },
+        "memory": {
+            "value": "100M"
+        },
+        "ports": {
+            "items": {
+                "port-1": {
+                    "value": {
+                        "container": 7860,
+                        "protocol": "http",
+                        "serviceType": "ServingPort"
+                    }
+                }
+            }
+        }
+    }
+}
