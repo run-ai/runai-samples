@@ -21,7 +21,7 @@
         "environment": {
             "items": {
                 "HUGGING_FACE_HUB_TOKEN": {
-                    "value": "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"
+                    "value": "<TOKEN>"
                 },
                 "RUNAI_JOB_NAME": {
                     "value": "${RUNAI_JOB_NAME}"
