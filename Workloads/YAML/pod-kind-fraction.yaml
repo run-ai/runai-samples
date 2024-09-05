@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: runai-image-generation
+  name: fraction-example
+  labels:
+    app: fraction-example
+  annotations:
+        gpu-fraction: "0.1"
+spec:
+  containers:
+  - image: gcr.io/run-ai-demo/quickstart-demo
+    imagePullPolicy: IfNotPresent
+    name: fraction-example
+  restartPolicy: Always
