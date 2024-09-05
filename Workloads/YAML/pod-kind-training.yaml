@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: runai-image-generation
+  name: training-example
+  labels:
+    app: training-example
+spec:
+  containers:
+  - image: gcr.io/run-ai-demo/quickstart-demo
+    imagePullPolicy: IfNotPresent
+    name: training-example
+    resources:
+        limits:
+          nvidia.com/gpu: 1
+  restartPolicy: Always
