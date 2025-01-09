@@ -370,7 +370,7 @@ def create_environment8(token):
             },
             {
                 "name": "WANDB_API_KEY",
-                "value": "a22f27d89aec7de8419a4d0841bdbc9fef90a112"
+                "value": "<INSERT_WANDB_KEY>"
             }
         ],
         "image": "jupyter/base-notebook",
