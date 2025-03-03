@@ -1,0 +1,206 @@
+Fine-Tune Llama-3.1 Model using Run:AI
+
+Overview
+
+This repository contains all the necessary files to build Docker images and execute the complete lifecycle of fine-tuning a Llama-3.1 model. This includes downloading, training, serving with vLLM, and testing via a prompt.
+
+To accelerate training, models and checkpoints should be stored in /model on a shared storage volume. A data-mover pod is included to automate downloading all required files into the /model directory, minimizing setup time.
+
+Prerequisites
+
+Before you begin, ensure:
+
+You have a Run:AI project created.
+
+The project has at least 2 GPUs allocated.
+
+A shared data source (50GB PVC) is available.
+
+Steps to Fine-Tune Llama-3.1
+
+1. Login to Run:AI
+
+Via User Interface:
+
+Log in through the Run:AI web UI.
+
+Via CLI V1:
+
+runai login
+
+Via CLI V2:
+
+runai login --help
+
+Via API:
+
+Obtain an API token and authenticate as per the Run:AI API documentation.
+
+2. Create Data Source for Models & Training
+
+Navigate to Workload Manager → Data Sources.
+
+Click +NEW DATA SOURCE and select PVC.
+
+Configure as follows:
+
+Cluster: Select your cluster.
+
+Scope: Choose project scope.
+
+Name: model
+
+Storage Class: Custom storage class.
+
+Access Mode: Read-write by many.
+
+Claim Size: 50GB.
+
+Volume Mode: Filesystem.
+
+Container Path: /model
+
+Click CREATE DATA SOURCE.
+
+3. Deploy Data Mover
+
+Go to Workload Manager → Environments.
+
+Click +NEW ENVIRONMENT and configure:
+
+Name: data-mover
+
+Workload Type: Training
+
+Image URL: harbor.runailabs-ps.com/guest-repo/llama3.1-data-mover:1.0
+
+Click CREATE ENVIRONMENT.
+
+CLI Alternative:
+
+runai training submit data-mover --existing-pvc \
+  claimname=model-kirson-doc-1737280628-4ipgi,path=/model \
+  -i harbor.runailabs-ps.com/guest-repo/llama3.1-data-mover:1.0 -p demo
+
+4. Configure Distributed LoRA Training
+
+Go to Workload Manager → Environments.
+
+Click +NEW ENVIRONMENT and configure:
+
+Name: model-lora-training
+
+Workload Type: Training
+
+Architecture: Distributed (PyTorch, Worker & Master)
+
+Image URL: harbor.runailabs-ps.com/guest-repo/ekin:1.0
+
+Click CREATE ENVIRONMENT.
+
+5. Start Training & Obtain Checkpoint
+
+Navigate to Workload Manager → Workloads.
+
+Click +NEW WORKLOAD and select Training.
+
+Configure:
+
+Name: LoRA-training
+
+Environment: model-lora-training
+
+Compute Resource: one-gpu
+
+PVC Path: /model
+
+Click CREATE TRAINING.
+
+This process saves a checkpoint at:
+
+/model/checkpoints/checkpoint-400
+
+CLI Alternative:
+
+runai training pytorch submit kirson \
+--existing-pvc "claimname=model-kirson-doc-1737280628-4ipgi,path=/model" \
+-i harbor.runailabs-ps.com/guest-repo/ekin:1.0  -g 1 -p demo
+
+6. Deploy Inference Server
+
+Navigate to Workload Manager → Workloads.
+
+Click +NEW WORKLOAD → Inference.
+
+Configure:
+
+Environment: llm-server
+
+Image URL: runai.jfrog.io/core-llm/runai-vllm:v0.6.4-0.10
+
+Serving Protocol: HTTP
+
+Port: 8000
+
+Compute Resource: one-gpu
+
+Command:
+
+vllm serve /model/Meta-Llama-3.1-8B-Instruct \
+--enable-lora --lora-modules adapter=/model/checkpoints/checkpoint-400 \
+--max-model-len 10000 --enforce-eager
+
+Click CREATE INFERENCE.
+
+7. Deploy Gradio UI for Testing
+
+Navigate to Workload Manager → Workloads.
+
+Click +NEW WORKLOAD → Workspace.
+
+Configure:
+
+Environment: chatbot-ui
+
+Image URL: runai.jfrog.io/core-llm/llm-app
+
+Model Name: /model/Meta-Llama-3.1-8B-Instruct
+
+Model Base URL: http://llm.runai-demo.svc.cluster.local
+
+Click CREATE WORKSPACE.
+
+Repository Structure
+
+File
+
+Description
+
+Dockerfile
+
+Base image for the environment
+
+Dockerfile-data-mover
+
+Image for the data mover pod
+
+clone.sh
+
+Script for cloning models
+
+distributed.py
+
+Distributed training script
+
+launch.sh
+
+Launch script for training
+
+Contributing
+
+Feel free to open an issue or pull request if you have suggestions or improvements.
+
+
+🚀 Now you’re ready to fine-tune and deploy Llama-3.1 with Run:AI! 🚀
+
+
