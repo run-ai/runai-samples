@@ -1,0 +1,26 @@
+# Use an official lightweight Linux image
+FROM ubuntu:latest
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    git curl && \
+    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
+    apt-get install -y git-lfs && \
+    git lfs install
+
+# Ensure the /demo directory exists
+RUN mkdir -p /model/
+
+# Set the working directory
+WORKDIR /model
+RUN mkdir checkpoints && chmod -R 777 /model
+
+# Copy the script into the container
+COPY clone.sh /clone.sh
+#COPY distributed.py launch.sh /demo/
+
+# Make the script executable
+RUN chmod +x /clone.sh
+
+# Run the Bash script
+CMD ["/clone.sh"]
