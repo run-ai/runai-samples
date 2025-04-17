@@ -44,7 +44,7 @@ def create_environment1(token):
         "command": "start-notebook.sh",
         "args": "--NotebookApp.token='' --port=8888",
         "environmentVariables": [],
-        "image": "gcr.io/run-ai-demo/jupyter-demo",
+        "image": "runai.jfrog.io/demo/jupyter-demo",
         "imagePullPolicy": "IfNotPresent",
         "connections": [
             {
@@ -283,7 +283,7 @@ def create_environment6(token):
     },
     "spec": {
         "environmentVariables": [],
-        "image": "gcr.io/run-ai-demo/quickstart-demo",
+        "image": "runai.jfrog.io/demo/quickstart-demo",
         "imagePullPolicy": "IfNotPresent",
         "uidGidSource": "fromTheImage",
         "capabilities": []
